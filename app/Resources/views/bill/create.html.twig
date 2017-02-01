@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="panel panel-primary">
+      <div class="panel-heading">Create a Bill</div>
+
+      <div class="panel-body">
+      	<div class="form-group">
+	      	{{ form_start(form)  }}
+	      	{{ form_widget(form) }}
+	      	{{ form_end(form)    }}
+      	</div>
+      </div>
+    </div>
+
+{% endblock %}

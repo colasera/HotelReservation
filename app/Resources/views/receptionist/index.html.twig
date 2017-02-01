@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	  {% for flashMessage in app.session.flashbag.get('success') %}
+	  <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  		{{ flashMessage }}
+	  </div>
+	  {% endfor %}
+
+	<div class="panel panel-primary">
+
+      <div class="panel-heading">Create a Receptionist</div>
+      <div class="panel-body">
+      	<a class="btn btn-success" href="{{ path('receptionist_create') }}">Create a Receptionist</a>
+      </div>
+    </div>
+
+	<div class="panel panel-primary">
+      <div class="panel-heading">Receptionist List</div>
+      <div class="panel-body">
+      	<table class="table">
+    		<thead>
+    			<tr>
+	    			<th>Name</th>
+	    			<th>Tel no</th>
+	    			<th>Address</th>
+            <th></th>
+	    		</tr>
+    		</thead>
+    		<tbody>
+    			{% for receptionist in receptionists %}
+    			<tr>
+	    			<td>{{ receptionist.name    }}</td>
+            <td>{{ receptionist.telno   }}</td>
+	    			<td>{{ receptionist.address }}</td>
+	    			<td>
+	    				<a class="btn btn-default" href="{{ path('receptionist_edit', { 'id' : receptionist.id } ) }}">Edit</a>
+	    				<form method="post" action="{{ path('receptionist_delete', { 'id' : receptionist.id } ) }}" style="display: inline;">
+	    					<input type="submit" class="btn btn-danger" name="save" value="Delete">
+	    				</form>
+	    			</td>
+    			</tr>
+    			{% endfor %}
+    		</tbody>
+  		</table>
+      </div>
+    </div>
+
+{% endblock %}

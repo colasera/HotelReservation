@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	  {% for flashMessage in app.session.flashbag.get('success') %}
+	  <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  		{{ flashMessage }}
+	  </div>
+	  {% endfor %}
+
+	<div class="panel panel-primary">
+
+      <div class="panel-heading">Create a Food Item</div>
+      <div class="panel-body">
+      	<a class="btn btn-success" href="{{ path('food_item_create') }}">Create a Food Item</a>
+      </div>
+    </div>
+
+	<div class="panel panel-primary">
+      <div class="panel-heading">Food Item List</div>
+      <div class="panel-body">
+      	<table class="table">
+    		<thead>
+    			<tr>
+	    			<th>Id</th>
+            <th>Name</th>
+	    			<th></th>
+	    		</tr>
+    		</thead>
+    		<tbody>
+    			{% for food_item in food_items %}
+    			<tr>
+	    			<td>{{ food_item.id   }}</td>
+            <td>{{ food_item.name }}</td>
+	    			<td>
+	    				<a class="btn btn-default" href="{{ path('food_item_edit', { 'id' : food_item.id } ) }}">Edit</a>
+	    				<form method="post" action="{{ path('food_item_delete', { 'id' : food_item.id } ) }}" style="display: inline;">
+	    					<input type="submit" class="btn btn-danger" name="save" value="Delete">
+	    				</form>
+	    			</td>
+    			</tr>
+    			{% endfor %}
+    		</tbody>
+  		</table>
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+      <div class="jumbotron">
+        <h1>Welcome to Hotel Reservation</h1>
+        <p class="lead">This system will help you to manage Hotel reservations.</p>
+      </div>
+
+      <div class="row marketing">
+
+                 <div class="col-lg-6">
+
+	        <div style="height:90px;">
+	           <a class="btn btn-success btn-block" href="/managers">Manager List</a>
+	           <p>View Manager List, Create, Edit or Update Managers.</p>
+	        </div>
+
+	        <div style="height:90px;">
+	          <a class="btn btn-success btn-block" href="/inventories">Inventory List</a>
+	          <p>View Inventory List, Create, Edit or Update Inventories.</p>
+			</div>
+
+			<div style="height:90px;">
+			  <a class="btn btn-success btn-block" href="/receptionists">Receptionist List</a>
+			  <p>View Receptionist List, Create, Edit or Update Receptionists.</p>
+			</div>
+
+			<div style="height:90px;">
+              <a class="btn btn-success btn-block" href="/chefs">Chef List</a>
+              <p>View Chef List, Create, Edit or Update Chefs.</p>
+			</div>
+
+			<div style="height:90px;">
+              <a class="btn btn-success btn-block" href="/customers">Customer List</a>
+              <p>View Customer List, Create, Edit or Update Customers.</p>
+			</div>
+
+        </div>
+
+        <div class="col-lg-6">
+          
+          <div style="height:90px;">
+            <a class="btn btn-success btn-block" href="/rooms">Room List</a>
+            <p>View Room List, Create, Edit or Update Rooms.</p>
+         </div>
+
+          <div style="height:90px;">
+            <a class="btn btn-success btn-block" href="/food_items">Food Item List</a>
+            <p>View Food Item List, Create, Edit or Update Food Items.</p>
+          </div>
+
+          <div style="height:90px;">
+            <a class="btn btn-success btn-block" href="/house_keepings">House Keeping List</a>
+            <p>View House Keeping List, Create, Edit or Update House Keepings.</p>
+          </div>
+
+          <div style="height:90px;">
+            <a class="btn btn-success btn-block" href="/bills">Bill List</a>
+            <p>View Bill List, Create, Edit or Update Bills.</p>
+          </div>
+
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block home_active %}active{% endblock %}

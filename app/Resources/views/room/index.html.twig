@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	  {% for flashMessage in app.session.flashbag.get('success') %}
+	  <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  		{{ flashMessage }}
+	  </div>
+	  {% endfor %}
+
+    {% for flashMessage in app.session.flashbag.get('failure') %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ flashMessage }}
+    </div>
+    {% endfor %}
+
+	<div class="panel panel-primary">
+
+      <div class="panel-heading">Create a Room</div>
+      <div class="panel-body">
+      	<a class="btn btn-success" href="{{ path('room_create') }}">Create a Room</a>
+      </div>
+    </div>
+
+	<div class="panel panel-primary">
+      <div class="panel-heading">Room List</div>
+      <div class="panel-body">
+      	<table class="table">
+    		<thead>
+    			<tr>
+	    			<th>Room No</th>
+            <th>Location</th>
+	    			<th></th>
+	    		</tr>
+    		</thead>
+    		<tbody>
+    			{% for room in rooms %}
+    			<tr>
+	    			<td>{{ room.id       }}</td>
+            <td>{{ room.location }}</td>
+	    			<td>
+	    				<a class="btn btn-default" href="{{ path('room_edit', { 'id' : room.id } ) }}">Edit</a>
+	    				<form method="post" action="{{ path('room_delete', { 'id' : room.id } ) }}" style="display: inline;">
+	    					<input type="submit" class="btn btn-danger" name="save" value="Delete">
+	    				</form>
+	    			</td>
+    			</tr>
+    			{% endfor %}
+    		</tbody>
+  		</table>
+      </div>
+    </div>
+
+{% endblock %}
