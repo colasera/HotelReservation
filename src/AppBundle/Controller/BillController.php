@@ -32,7 +32,7 @@ class BillController extends Controller
      */
     public function createAction(Request $request)
     {
-        $bill = new Bill();
+        $bill = new Bill;
 
         $form = $this->createFormBuilder($bill)
             ->add('customerId' , EntityType::class, array(
